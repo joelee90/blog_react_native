@@ -9,13 +9,12 @@ import {
 } from 'react-native';
 import { Context } from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const IndexScreen = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
   return (
     <>
-      <Button title='Add Post' onPress={addBlogPost} />
       <FlatList
         data={state}
         keyExtractor={(blogPost) => blogPost.title}
@@ -44,12 +43,7 @@ IndexScreen.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-        <MaterialCommunityIcons
-          style={styles.write}
-          name='pencil'
-          size={24}
-          color='black'
-        />
+        <AntDesign style={styles.write} name='plus' size={24} color='black' />
       </TouchableOpacity>
     ),
   };
