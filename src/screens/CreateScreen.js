@@ -14,6 +14,10 @@ const CreateScreen = ({ navigation }) => {
   );
 };
 
+CreateScreen.navigationOptions = () => {
+  title: 'Create';
+};
+
 const styles = StyleSheet.create({});
 
 export default CreateScreen;

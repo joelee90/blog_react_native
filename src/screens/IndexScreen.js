@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,24 @@ import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 const IndexScreen = ({ navigation }) => {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, getBlogPosts, deleteBlogPost } = useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts();
+    //When component first renders
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts();
+    });
+    //When returned to screen, do fetch again.
+
+    return () => {
+      listener.remove();
+    };
+    // return function in useEffect function, only invoked when instance of IndexScreen is
+    // ever completely stopped showing on the screen.
+    // If component is no longer visible, clean up.
+  }, []);
+
   return (
     <>
       <FlatList
