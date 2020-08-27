@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 const BlogPostForm = ({ onSubmit, initialValues, btnCreate, btnEdit }) => {
   const [title, setTitle] = useState(initialValues.title);
   const [content, setContent] = useState(initialValues.content);
+
   return (
     <View>
       <Text style={styles.label}>Enter title: </Text>
