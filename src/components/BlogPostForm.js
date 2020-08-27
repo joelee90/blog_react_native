@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { Button } from 'react-native-elements';
 
-const BlogPostForm = ({ onSubmit, initialValues }) => {
+const BlogPostForm = ({ onSubmit, initialValues, btnCreate, btnEdit }) => {
   const [title, setTitle] = useState(initialValues.title);
   const [content, setContent] = useState(initialValues.content);
   return (
@@ -9,16 +10,24 @@ const BlogPostForm = ({ onSubmit, initialValues }) => {
       <Text style={styles.label}>Enter title: </Text>
       <TextInput
         style={styles.input}
+        height={50}
         value={title}
         onChangeText={(text) => setTitle(text)}
       />
       <Text style={styles.label}>Enter content: </Text>
       <TextInput
         style={styles.input}
+        height={200}
+        multiline={true}
         value={content}
         onChangeText={(text) => setContent(text)}
       />
-      <Button title='Save Blog Post' onPress={() => onSubmit(title, content)} />
+
+      {btnCreate ? (
+        <Button title='New Post' onPress={() => onSubmit(title, content)} />
+      ) : (
+        <Button title='Save Post' onPress={() => onSubmit(title, content)} />
+      )}
     </View>
   );
 };

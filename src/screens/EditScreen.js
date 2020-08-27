@@ -10,12 +10,19 @@ const EditScreen = ({ navigation }) => {
 
   return (
     <BlogPostForm
+      btnEdit={'edit'}
       initialValues={{ title: blogPost.title, content: blogPost.content }}
       onSubmit={(title, content) => {
         editBlogPost(id, title, content, () => navigation.pop());
       }}
     />
   );
+};
+
+EditScreen.navigationOptions = ({ navigation }) => {
+  return {
+    title: 'Edit Blog',
+  };
 };
 
 const styles = StyleSheet.create({});

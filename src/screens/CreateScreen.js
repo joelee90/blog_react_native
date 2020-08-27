@@ -7,6 +7,7 @@ const CreateScreen = ({ navigation }) => {
   const { addBlogPost } = useContext(Context);
   return (
     <BlogPostForm
+      btnCreate={'create'}
       onSubmit={(title, content) => {
         addBlogPost(title, content, () => navigation.navigate('Index'));
       }}
@@ -14,8 +15,10 @@ const CreateScreen = ({ navigation }) => {
   );
 };
 
-CreateScreen.navigationOptions = () => {
-  title: 'Create';
+CreateScreen.navigationOptions = ({ navigation }) => {
+  return {
+    title: 'Create',
+  };
 };
 
 const styles = StyleSheet.create({});

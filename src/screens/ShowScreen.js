@@ -9,15 +9,16 @@ const ShowScreen = ({ navigation }) => {
     (blogPost) => blogPost.id === navigation.getParam('id')
   );
   return (
-    <View>
-      <Text>{blogPost.title}</Text>
-      <Text>{blogPost.content}</Text>
+    <View style={styles.blog}>
+      <Text style={styles.title}>{blogPost.title}</Text>
+      <Text style={styles.content}>{blogPost.content}</Text>
     </View>
   );
 };
 
 ShowScreen.navigationOptions = ({ navigation }) => {
   return {
+    title: 'Single Blog',
     headerRight: () => (
       <TouchableOpacity
         style={styles.edit}
@@ -34,6 +35,17 @@ ShowScreen.navigationOptions = ({ navigation }) => {
 const styles = StyleSheet.create({
   edit: {
     paddingRight: 20,
+  },
+  blog: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
+  title: {
+    fontSize: 25,
+  },
+  content: {
+    fontSize: 20,
+    paddingTop: 10,
   },
 });
 
